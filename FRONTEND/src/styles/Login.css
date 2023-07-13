@@ -1,0 +1,38 @@
+.outer{
+    position:absolute;
+    display:flex;
+    flex-direction: column;
+    min-height: 350px;
+    width: 30%;
+    margin-left: 37%;
+    margin-top: 10%;
+    background-color:chocolate;
+    justify-content: space-around;
+    align-items:center;
+    background-color: rgba(0,0, 0, 0.3); 
+    border-radius: 30px;
+
+}
+
+.inners{
+    color:white;
+    letter-spacing: 2px;
+    font-weight: 800;
+ }
+ 
+ .link:hover{
+   border:2px solid white
+ }
+ 
+ .link:active{
+   background-color: black;
+   color: white;
+ 
+ }
+ .link{
+     text-decoration:none;
+     color:white;
+ }
+.loginerror{
+  margin-top: 20px;
+}
