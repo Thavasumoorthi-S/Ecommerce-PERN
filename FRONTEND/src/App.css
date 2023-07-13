@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+.App .register{
+  height: 100vh;
+  width: 100%;
+  /* background-color: bisque; */
+  background-image: url("https://img.freepik.com/free-photo/showing-cart-trolley-shopping-online-sign-graphic_53876-133967.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.App .login{
+  height:100vh;
+  width:100%;
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/back_our/20190619/ourmid/pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-image_133225.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
