@@ -1,0 +1,180 @@
+.home{
+    display: flex;
+    flex-direction: column;
+}
+.header{
+   
+    min-height: 100px;
+    background-color:dodgerblue;
+    position: sticky;
+    top:0;
+}
+.headers{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+/* /* .header1{
+    align-items: flex-start;
+} */
+/* .header2{
+    float: right;
+}  */
+.header3{
+    background-color: white;
+}
+Link{
+    text-decoration: none;
+}
+.section{
+    display: flex;
+}
+.filter{
+    background-color: lightsalmon;
+    min-height: 500px;
+    width:30%;
+
+}
+.filters{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.filterdata{
+    background-color:#452e12a9;
+    width:70%;
+    min-height: 600px;
+}
+.footer{
+    min-height: 100px;
+    background-color:mediumpurple;
+}
+
+.imageitem{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.item{
+    width:200px;
+    height:300px;
+    /* background-color:violet; */
+    background-color:palegreen;
+    margin: 30px;
+}
+.ram
+{
+    margin-top: 10px;
+  text-align: center;  
+  color: blue;
+
+}
+.price{
+    margin-top: 10px;
+    color: blue;
+    text-align: center;  
+
+
+}
+.brand{
+    margin-top: 10px;
+    color: blue;
+    text-align: center;  
+
+}
+.button{
+    margin-top: 10px;
+
+    text-align: center;  
+    
+}
+button{
+    border-radius: 10px;
+    background-color: blue;
+    color:white;
+    padding: 5px;
+}
+
+
+.outerbrand{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: beige;
+    margin-top: 20px;
+    
+ }
+ .outerbrand input
+ {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+  
+ }
+ .outerbrand span
+ {
+   text-transform: uppercase;
+   font-weight: 700;
+   letter-spacing: 1px;
+ }
+ .innerbrand{
+   margin-left:2px;
+   height: 100%;
+   width:20%;
+   display: flex;   
+ }
+ .innerbrand input
+ {
+   margin-right:1px;
+ }
+ .inner-cont
+ {
+   display: flex;
+   width: 100%;
+   height: 40%;
+   flex-wrap: wrap;
+   background-color:black;
+   color:white;
+ 
+ }
+ 
+ .footeritem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+ .copyright{
+    margin-top: 30px;
+    color:white
+ }
+ .contact{
+    color:blue;
+    text-decoration: none;
+ }
+
+ .contact:hover{
+    color:purple;
+ }
+ /* jjnnn */
+
+ .header2{
+    color: rgb(255, 255, 255);
+    animation: glow 0.5s infinite;
+ }
+
+ /* @keyframes glow{
+    from{
+        color:rgb(225, 0, 0);
+    }
+    to{
+        text-shadow: 10px 0px 25px;
+        text-shadow: 10px 0px 50px;
+        text-shadow: 10px 0px 75px;
+        text-shadow: 10px 0px 100px;
+    }
+ } */
