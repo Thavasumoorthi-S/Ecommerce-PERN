@@ -22,7 +22,7 @@ app.post('/setuser', async (req, res) => {
   
   app.post('/checkuser', async (req, res) => {
     try {
-        const {email,password}=req.body
+        const {email}=req.body
       const items = await db.one('SELECT * FROM "Users"."user1" WHERE email = $1', email);
       res.json(items);
     } catch (error) {
