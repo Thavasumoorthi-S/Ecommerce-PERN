@@ -9,7 +9,8 @@
     background-color:chocolate;
     justify-content: space-around;
     align-items:center;
-    background-color: rgba(0,0, 0, 0.3); 
+   background-color: rgba(0,0,0);
+    opacity: 0.3; 
     border-radius: 30px;
 
 }
