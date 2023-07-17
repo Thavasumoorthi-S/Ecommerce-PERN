@@ -29,19 +29,7 @@ const useremail=param.get('mail')
   const [laptopshow,setlaptopshow]=useState(false);
   const [desktopshow,setdesktopshow]=useState(false);
   const [ramshow,setramshow]=useState(false)
-  
-  const [mobiledata,setmobiledata]=useState([]);
-  const [laptopdata,setlaptopdata]=useState([]);
-  const [desktopdata,setdesktopdata]=useState([]);
-  
-  
-  const [selectedOption, setSelectedOption] = useState('');
-  const [selects, setselects] = useState('');
-  
-  
-  const [brand,setbrand]=useState('');
-  const [size,setsize]=useState('')
-  
+
   
   const handleChange=(e)=>{
     setSelectedOption(e.target.value)
@@ -59,138 +47,303 @@ const useremail=param.get('mail')
     setsize(item)
   }
   
-  let cont;
-  
+
+
+
+
+
   useMemo(()=>{
-    if(mobileshow===true && ramshow===true)
+    if(mobileshow===true&&laptopshow===true  && desktopshow===true && ramshow===true && size!=='' )
+  {
+   const items=list.filter(item=>{
+      return item.size===size;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===true&&laptopshow===true  && desktopshow===true && ramshow===true )
+  {
+   const items=list.filter(item=>{
+      return item;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===true&&laptopshow===true  && desktopshow===true)
+  {
+   const items=list.filter(item=>{
+      return item
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===true&&laptopshow===true && ramshow===true && size!=='')
+  {
+   const items=list.filter(item=>{
+      return (item.type==='mobile'||item.type==="laptop") && item.size===size;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===true&&desktopshow===true && ramshow===true && size!=='')
+  {
+   const items=list.filter(item=>{
+      return (item.type==='mobile' || item.type==="desktop") && item.size===size;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(laptopshow===true&&desktopshow===true && ramshow===true && size!=='')
+  {
+   const items=list.filter(item=>{
+      return (item.type==='laptop' || item.type==="desktop") && item.size===size;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===true&& laptopshow===true  && ramshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==='mobile' || item.type==="laptop"
+    })
+    setnewdata(items);
+    setcheck(1)
+  } else if(laptopshow===true&&desktopshow===true  && ramshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==="laptop" || item.type==="desktop"
+    })
+    setnewdata(items);
+    setcheck(1)
+  } else if(mobileshow===true&&desktopshow===true  && ramshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==="mobile" || item.type==="desktop"
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===false&&laptopshow===false && desktopshow===false && ramshow===false)
+  {
+   const items=list.filter(item=>{
+      return item;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  
+  else if(mobileshow===true && ramshow===true)
+  {
+    if(brand!=='' && size!=='')
     {
-      if(brand!=='' && size!=='')
-      {
-        cont=list.filter(items=>{
-          return items.size===size && items.brand===brand
-        })
-         setnewdata(cont)
-        setcheck(1)
-      }
-  
-      else if(brand==='')
-      {
-        cont=list.filter(items=>{
-          return items.size===size;
-        })
-        setnewdata(cont)
-        console.log(size)
-        console.log(cont)
-        setcheck(1)
-      }
-      else if(size==='')
-      {
-        cont=list.filter(items=>{
-          return items.brand===brand
-        })
-        setnewdata(cont)
-        setcheck(1)
-      }
-  
+      const cont=list.filter(items=>{
+        return items.size===size && items.brand===brand
+      })
+       setnewdata(cont)
+       
+      setcheck(1)
     }
-    
-    else if(laptopshow===true && ramshow===true)
+     else if(brand==='' && size==='')
     {
-      if(brand!=='' && size!=='')
-      {
-        cont=list.filter(items=>{
-          return items.size===size&& items.brand===brand
-        })
-        setnewdata(cont)
-        setcheck(1)
-      }
-  
-      else if(brand==='')
-      {
-        cont=list.filter(items=>{
-          return items.size===size
-        })
-        setnewdata(cont)
-        setcheck(1)
-      }
-      else if(size==='')
-      {
-        cont=list.filter(items=>{
-          return items.brand===brand
-        })
-        setnewdata(cont)
-        setcheck(1)
-      }
+      const cont=list.filter(items=>{
+        return items.type==="mobile"
+      })
+       setnewdata(cont)
+       
+      setcheck(1)
     }
-  
-    else if(desktopshow===true && ramshow===true)
+
+    else if(brand==='')
     {
-      if(brand!=='' && size!=='')
-      {
-        cont=list.filter(items=>{
-          return items.size===size && items.brand===brand;
-        })
-        setnewdata(cont)
-        setcheck(1)
-      }
-  
-      else if(brand==='')
-      {
-        cont=list.filter(items=>{
-          return items.size===size
-        })
-        setnewdata(cont)
-        setcheck(1)
-      }
-      else if(size==='')
-      {
-        cont=list.filter(items=>{
-          return items.brand===brand
-        })
-        setnewdata(cont)
-        setcheck(1)
-      }
+      const cont=list.filter(items=>{
+        return items.type==="mobile" &&items.size===size;
+      })
+      setnewdata(cont)
+      console.log(size)
+      console.log(cont)
+      setcheck(1)
     }
-  
-   else if(mobileshow===true)
+    else if(size==='')
     {
-      cont=mobiledata.filter(items=>{
+    const  cont=list.filter(items=>{
         return items.brand===brand
       })
       setnewdata(cont)
       setcheck(1)
     }
+
+  }
   
-   else if(laptopshow===true)
+  else if(laptopshow===true && ramshow===true)
+  {
+    if(brand!=='' && size!=='')
     {
-      cont=laptopdata.filter(items=>{
+     const cont=list.filter(items=>{
+        return items.size===size&& items.brand===brand
+      })
+      setnewdata(cont)
+      setcheck(1)
+    }
+    else if(brand==='' && size==='')
+    {
+      const cont=list.filter(items=>{
+        return items.type==="laptop"
+      })
+       setnewdata(cont)
+       
+      setcheck(1)
+    }
+
+    else if(brand==='')
+    {
+      const cont=list.filter(items=>{
+        return  items.type==="laptop" && items.size===size;
+      })
+      setnewdata(cont)
+      setcheck(1)
+    }
+    else if(size==='')
+    {
+     const cont=list.filter(items=>{
         return items.brand===brand
       })
       setnewdata(cont)
       setcheck(1)
     }
-  
-    else if(desktopshow==true)
+  }
+
+  else if(desktopshow===true && ramshow===true)
+  {
+    if(brand!=='' && size!=='')
     {
-      cont=desktopdata.filter(items=>{
+     const cont=list.filter(items=>{
+        return items.size===size && items.brand===brand;
+      })
+      setnewdata(cont)
+      setcheck(1)
+    }
+    else if(brand==='' && size==='')
+    {
+     const cont=list.filter(items=>{
+        return items.type==="desktop"
+      })
+       setnewdata(cont)
+       
+      setcheck(1)
+    }
+
+    else if(brand==='')
+    {
+     const cont=list.filter(items=>{
+        return items.type==="desktop" && items.size===size
+      })
+      setnewdata(cont)
+      setcheck(1)
+    }
+    else if(size==='')
+    {
+     const cont=list.filter(items=>{
         return items.brand===brand
       })
       setnewdata(cont)
-      setcheck(1);
+      setcheck(1)
     }
+  }
+  else if(mobileshow===true&&laptopshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==='mobile' || item.type==='laptop';
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===true&&desktopshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==='mobile' ||item.type==='desktop';
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(laptopshow===true&&desktopshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==='laptop' ||item.type==='desktop';
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(mobileshow===true && brand!=="")
+  {
+    const items=list.filter(item=>{
+      return item.type==='mobile' && item.brand===brand;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(laptopshow===true && brand!=="")
+  {
+    const items=list.filter(item=>{
+      return item.type==='laptop' && item.brand===brand;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+   else if(desktopshow===true && brand!=="")
+  {
+    const items=list.filter(item=>{
+      return item.type==='desktop' && item.brand===brand;
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+   else if(ramshow===true && size!=="")
+  {
+    const items=list.filter(item=>{
+      return item.size===size;
+    })
+    console.log(items)
+    setnewdata(items);
+    setcheck(1)
+  }
+ 
+  else if(mobileshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==='mobile';
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+
+ else if(laptopshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==='laptop';
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+  else if(desktopshow===true)
+  {
+   const items=list.filter(item=>{
+      return item.type==='desktop';
+    })
+    console.log(items)
+    setnewdata(items);
+    setcheck(1);
+  }
+
+},[brand,size,mobileshow,ramshow,laptopshow,desktopshow])
+
+  const [selectedOption, setSelectedOption] = useState('');
+  const [selects, setselects] = useState('');
   
-    else if(ramshow===true)
-    {
-      cont=list.filter(items=>{
-        return items.size===size
-      })
-      setnewdata(cont)
-      setcheck(1);
-    }
   
-  },[brand,size])
+  const [brand,setbrand]=useState('');
+  const [size,setsize]=useState('')
   
-  
+
   const desktopclick=()=>{
     setdesktopshow(!desktopshow);
   }
@@ -207,88 +360,7 @@ const useremail=param.get('mail')
     setramshow(!ramshow)
   }
   
-  useMemo(()=>{
-    if(laptopshow===false&&desktopshow===false &&mobileshow===false )
-    {
-     const items=list.filter(item=>{
-        return item
-      })
-      setnewdata(items);
-      setcheck(1)
-    }
-    
-    else if(laptopshow===true&&desktopshow===true &&mobileshow===true)
-    {
-     const items=list.filter(item=>{
-        return item
-      })
-      setnewdata(items);
-      setcheck(1)
-    }
-    else if(mobileshow===true&&laptopshow===true)
-    {
-     const items=list.filter(item=>{
-        return item.type==='mobile' || item.type==='laptop';
-      })
-      setnewdata(items);
-      setcheck(1)
-    }
-    else if(mobileshow===true&&desktopshow===true)
-    {
-     const items=list.filter(item=>{
-        return item.type==='mobile' ||item.type==='desktop';
-      })
-      setnewdata(items);
-      setcheck(1)
-    }
-    else if(laptopshow===true&&desktopshow===true)
-    {
-     const items=list.filter(item=>{
-        return item.type==='laptop' ||item.type==='desktop';
-      })
-      setnewdata(items);
-      setcheck(1)
-    }
-   else if(mobileshow===true)
-    {
-     const items=list.filter(item=>{
-        return item.type==='mobile';
-      })
-      console.log(items)
-      setnewdata(items);
-      setmobiledata(items)
-      setcheck(1)
-    }
-   else if(laptopshow===true)
-    {
-     const items=list.filter(item=>{
-        return item.type==='laptop';
-      })
-      console.log(items)
-      setnewdata(items);
-      setlaptopdata(items)
-      setcheck(1)
-    }
-    else if(desktopshow===true)
-    {
-     const items=list.filter(item=>{
-        return item.type==='desktop';
-      })
-      setnewdata(items);
-      setdesktopdata(items)
-      setcheck(1)
-    }
-    else if(ramshow===true)
-    {
-     const items=list.filter(item=>{
-        return item;
-      })
-      setnewdata(items);
-      setcheck(1)
-    }
   
-  
-  },[mobileshow,laptopshow,desktopshow,ramshow])
 
   useMemo(()=>{
     axios.get(`http://localhost:8000/getitem/${useremail}`).then(items=>{console.log(items.data);setuseritem(items.data)}).catch(err=>{console.log(err)})
