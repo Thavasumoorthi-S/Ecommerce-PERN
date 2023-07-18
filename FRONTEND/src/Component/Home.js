@@ -24,6 +24,10 @@ const useremail=param.get('mail')
   const {cart,setcart}=useContext(Userscontext)
     const [newdata,setnewdata]=useState([])
     const [check,setcheck]=useState(0);
+
+const Mobilebrands=['Vivo','Oppo','Oneplus','Samsung','Redmi','Realme']
+const Laptopbrands=['Lenovo','Hp','Dell','Acer']
+const Desktopbrands=['lenovo','hp','dell','acer','asus']
   
   const [mobileshow,setmobileshow]=useState(false);
   const [laptopshow,setlaptopshow]=useState(false);
@@ -47,10 +51,6 @@ const useremail=param.get('mail')
     setsize(item)
   }
   
-
-
-
-
 
   useMemo(()=>{
     if(mobileshow===true&&laptopshow===true  && desktopshow===true && ramshow===true && size!=='' )
@@ -269,6 +269,28 @@ const useremail=param.get('mail')
   {
    const items=list.filter(item=>{
       return item.type==='laptop' ||item.type==='desktop';
+    })
+    setnewdata(items);
+    setcheck(1)
+  }
+     else if(mobileshow===true &&  !Mobilebrands.includes(brand))
+  {
+    const items=list.filter(item=>{
+      return item.type==='mobile'
+    })
+    setnewdata(items);
+    setcheck(1)
+  }else if(laptopshow===true && !Laptopbrands.includes(brand))
+  {
+    const items=list.filter(item=>{
+      return item.type==='laptop'
+    })
+    setnewdata(items);
+    setcheck(1)
+  }else if(desktopshow===true && !Desktopbrands.includes(brand))
+  {
+    const items=list.filter(item=>{
+      return item.type==='desktop'
     })
     setnewdata(items);
     setcheck(1)
